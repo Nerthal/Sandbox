@@ -10,9 +10,13 @@ public class SimpleClassTest {
 
     @Before
     public void setUp() {
-//        System.setProperty("webdriver.chrome.driver", "/src/test/chromedriver/chromedriver.exe");
         driver = new ChromeDriver();
         baseUrl = "http://www.google.com";
+    }
+
+    @After
+    public void cleanUp() {
+        driver.quit();
     }
 
     @Test

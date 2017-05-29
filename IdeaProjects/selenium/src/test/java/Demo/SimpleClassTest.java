@@ -1,6 +1,6 @@
-package Demo;
+package demo;
 
-import PageObject.GoogleSearchPage;
+import pageObject.GoogleSearchPage;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

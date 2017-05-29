@@ -1,4 +1,4 @@
-package PageObject;
+package pageObject;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -13,32 +13,25 @@ public class GoogleSearchPage extends PageObject {
     private WebElement searchBar;
 
     @FindBy(id = "resultStats")
-    private WebElement resultsStats;
+    private WebElement resultsCount;
 
-    private int resultsCount;
-
+    @FindBy(id="_fZl")
+    private WebElement searchButton;
 
     public GoogleSearchPage(RemoteWebDriver driver) {
         super(driver);
-        driver.get(baseUrl);
     }
-
 
     public int getResultsCount() {
-        return resultsCount;
+        WebDriverWait wait = new WebDriverWait(driver, 10000);
+        wait.until(s -> resultsCount.isDisplayed());
+        return Integer.parseInt(this.resultsCount.getText().split("\\(")[0].replaceAll("[^0-9]", ""));
     }
-
-    private int getResultsExactNumber(String resultText) {
-        return Integer.parseInt(resultText.split("\\(")[0].replaceAll("[^0-9]", ""));
-    }
-
 
     public GoogleSearchPage search(String searchTerm) {
+        driver.get(baseUrl);
         this.searchBar.sendKeys(searchTerm);
-        this.searchBar.sendKeys(Keys.ENTER);
-        WebDriverWait wait = new WebDriverWait(driver, 10000);
-        wait.until(s -> resultsStats.isDisplayed());
-        this.resultsCount = getResultsExactNumber(this.resultsStats.getText());
+        this.searchButton.click();
         return this;
     }
 

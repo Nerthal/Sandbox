@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import pageObject.ResultCountEvaluator;
 
 public class SimpleClassTest {
 	private RemoteWebDriver driver;
@@ -20,7 +21,8 @@ public class SimpleClassTest {
 
 	@Test
 	public void numberOfResultsShouldMatch() {
-		Assert.assertEquals(2040000, googleSearchPage.search("szczebrzeszyn").getResultsCount());
+		ResultCountEvaluator evaluator = new ResultCountEvaluator(2040000, 10000);
+		Assert.assertTrue(evaluator.areEqual(googleSearchPage.search("szczebrzeszyn").getResultsCount()));
 	}
 
 	@After

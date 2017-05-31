@@ -1,18 +1,17 @@
 package pageObject;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ResultCountEvaluator {
 
-    private int evaluatedValue;
-    private int minValue;
-    private int maxValue;
+	private int range;
 
-    public ResultCountEvaluator(int value, int range) {
-        this.evaluatedValue = value;
-        this.minValue = value - range;
-        this.maxValue = value + range;
-    }
+	public ResultCountEvaluator(final int range) {
+		this.range = range;
+	}
 
-    public boolean areEqual(int value) {
-        return minValue <= evaluatedValue && evaluatedValue <= maxValue;
-    }
+	public boolean areEqual(int expected, int actual) {
+		return expected <= actual - range || actual + range <= expected;
+	}
 }

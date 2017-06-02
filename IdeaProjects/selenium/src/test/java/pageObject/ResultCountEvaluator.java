@@ -2,17 +2,13 @@ package pageObject;
 
 public class ResultCountEvaluator {
 
-    private int evaluatedValue;
-    private int minValue;
-    private int maxValue;
+    private int range;
 
-    public ResultCountEvaluator(int value, int range) {
-        this.evaluatedValue = value;
-        this.minValue = value - range;
-        this.maxValue = value + range;
+    public ResultCountEvaluator( int range) {
+        this.range = range;
     }
 
-    public boolean areEqual(int value) {
-        return minValue <= evaluatedValue && evaluatedValue <= maxValue;
+    public boolean areEqual(int expectedValue, int actualValue) {
+        return expectedValue - range <= actualValue && actualValue <= expectedValue + range;
     }
 }

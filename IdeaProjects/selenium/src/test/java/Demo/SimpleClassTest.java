@@ -49,16 +49,16 @@ public class SimpleClassTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
                 {"szczebrzeszyn", 2040000},
-                {"Piekary Śląskie", 5200000},
-                {"Tychy", 17000000},
-                {"Bytom", 20000000},
+                {"Piekary Śląskie", 5150000},
+                {"Tychy", 17200000},
+                {"Bytom", 19700000},
                 {"Katowice", 62000000}
         });
     }
 
     @Test
     public void numberOfResultsShouldMatch() {
-        Assert.assertTrue(resultCountEvaluator.areEqual(resultCount, googleSearchPage.search("szczebrzeszyn").getResultsCount()));
+        Assert.assertTrue(resultCountEvaluator.areEqual(resultCount, googleSearchPage.search(cityName).getResultsCount()));
     }
 
     @After

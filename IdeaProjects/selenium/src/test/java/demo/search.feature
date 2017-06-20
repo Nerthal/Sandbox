@@ -6,8 +6,8 @@ Then results found should equal <resultCount>
 
 Examples:
 |name             | resultCount |
-|"szczebrzeszyn"  |  2040000    |
-|"Piekary Śląskie"|  5150000    |
-|"Tychy"          |  17200000   |
-|"Bytom"          |  19700000   |
-|"Katowice"       |  62000000   |
+|szczebrzeszyn  |  1630000    |
+|Piekary Śląskie|  4490000    |
+|Tychy          |  16400000   |
+|Bytom          |  18700000   |
+|Katowice       |  62000000   |

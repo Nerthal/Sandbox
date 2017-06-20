@@ -20,11 +20,13 @@ public class CucumberTests implements En {
             googleSearchPage.search(cityName);
         });
 
-        When("^search button is clicked$", () -> googleSearchPage.searchButtonClick());
+        When("^search button is clicked$", () -> {
+            googleSearchPage.searchButtonClick();
+        });
 
         Then("^results found should equal (\\d+)$", (Integer resultCount) -> {
             Assert.assertTrue(resultCountEvaluator.areEqual(resultCount, googleSearchPage.getResultsCount()));
-
+            driver.close();
         });
     }
 }

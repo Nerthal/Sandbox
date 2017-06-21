@@ -12,7 +12,6 @@ import pageObject.GoogleSearchPage;
 import pageObject.ResultCountEvaluator;
 
 @Configuration
-@PropertySource("classpath:test.properties")
 public class TestConfig {
 
     @Bean

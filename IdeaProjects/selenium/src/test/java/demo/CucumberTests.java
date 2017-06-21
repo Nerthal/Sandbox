@@ -2,7 +2,6 @@ package demo;
 
 import cucumber.api.java8.En;
 import org.junit.Assert;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -11,7 +10,8 @@ import pageObject.ResultCountEvaluator;
 
 @ContextConfiguration(classes = TestConfig.class)
 public class CucumberTests implements En {
-
+    @Autowired
+    private RemoteWebDriver driver;
 
     @Autowired
     private GoogleSearchPage googleSearchPage;
@@ -31,7 +31,7 @@ public class CucumberTests implements En {
 
         Then("^results found should equal (\\d+)$", (Integer resultCount) -> {
             Assert.assertTrue(resultCountEvaluator.areEqual(resultCount, googleSearchPage.getResultsCount()));
-
+            driver.close();
         });
     }
 }

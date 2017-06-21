@@ -3,6 +3,7 @@ package demo;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,10 +15,15 @@ import pageObject.ResultCountEvaluator;
 @PropertySource("classpath:test.properties")
 public class TestConfig {
 
-    private RemoteWebDriver driver = new ChromeDriver();
+    @Bean
+    public RemoteWebDriver driver() {
+        return new ChromeDriver();
+    }
 
     @Bean
-    public GoogleSearchPage  googleSearchPage() { return new GoogleSearchPage(driver);}
+    public GoogleSearchPage googleSearchPage() {
+        return new GoogleSearchPage(driver());
+    }
 
     @Value("${range}")
     private int range;

@@ -58,7 +58,7 @@ public class SimpleClassTest {
 
     @Test
     public void numberOfResultsShouldMatch() {
-        Assert.assertTrue(resultCountEvaluator.areEqual(resultCount, googleSearchPage.search(cityName).getResultsCount()));
+        Assert.assertTrue(resultCountEvaluator.areEqual(resultCount, googleSearchPage.search(cityName).searchButtonClick().getResultsCount()));
     }
 
     @After

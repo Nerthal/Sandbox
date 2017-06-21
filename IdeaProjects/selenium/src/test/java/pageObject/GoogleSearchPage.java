@@ -30,8 +30,11 @@ public class GoogleSearchPage extends PageObject {
     public GoogleSearchPage search(String searchTerm) {
         driver.get(baseUrl);
         this.searchBar.sendKeys(searchTerm);
-        this.searchButton.click();
         return this;
     }
 
+    public GoogleSearchPage searchButtonClick(){
+        this.searchButton.click();
+        return this;
+    }
 }
